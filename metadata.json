@@ -1,0 +1,8 @@
+{
+  "name": "Facebook Marketing AI Pro",
+  "description": "Nền tảng tìm kiếm khách hàng tiềm năng, phân tích nhu cầu bằng AI, quản lý đa Fanpage, hộp thư Messenger tập trung, CRM bán hàng và tự động hóa marketing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
