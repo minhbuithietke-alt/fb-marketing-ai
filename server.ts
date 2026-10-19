@@ -1414,6 +1414,22 @@ app.get('/api/webhook/facebook', (req: Request, res: Response) => {
 });
 
 // Event Receiver with Idempotency Deduplication and Signature Check
+app.get('/api/webhook/facebook', (req: any, res: any) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  // Lấy mã xác thực từ cấu hình phần mềm của bạn
+  const expectedToken = 'fb_marketing_ai_secret_verify_2026';
+
+  if (mode === 'subscribe' && token === expectedToken) {
+    console.log('Webhook xác thực thành công với Meta!');
+    return res.status(200).send(challenge);
+  } else {
+    console.log('Xác thực thất bại: Sai Verify Token hoặc thiếu tham số');
+    return res.sendStatus(403);
+  }
+});
 app.post('/api/webhook/facebook', (req: RequestWithRawBody, res: Response) => {
   const signature = req.headers['x-hub-signature-256'] as string | undefined;
 
